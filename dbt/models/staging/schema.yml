@@ -1,0 +1,64 @@
+version: 2
+
+models:
+  - name: stg_creators
+    description: "Cleaned creator dimension (from raw_creators)."
+    columns:
+      - name: creator_id
+        tests: [not_null, unique]
+      - name: tier
+        tests:
+          - accepted_values:
+              values: ['Small','Mid','Large']
+      - name: experiment_group
+        tests:
+          - accepted_values:
+              values: ['control','treatment']
+
+  - name: stg_podcasts
+    columns:
+      - name: podcast_id
+        tests: [not_null, unique]
+      - name: creator_id
+        tests:
+          - relationships:
+              to: ref('stg_creators')
+              field: creator_id
+
+  - name: stg_episodes
+    columns:
+      - name: episode_id
+        tests: [not_null, unique]
+      - name: podcast_id
+        tests:
+          - relationships:
+              to: ref('stg_podcasts')
+              field: podcast_id
+
+  - name: stg_creator_events
+    columns:
+      - name: creator_id
+        tests:
+          - relationships:
+              to: ref('stg_creators')
+              field: creator_id
+      - name: event_name
+        tests:
+          - accepted_values:
+              values: ['signup','eligible','enroll','first_payout']
+
+  - name: stg_listening_events
+    columns:
+      - name: episode_id
+        tests:
+          - relationships:
+              to: ref('stg_episodes')
+              field: episode_id
+
+  - name: stg_revenue_events
+    columns:
+      - name: episode_id
+        tests:
+          - relationships:
+              to: ref('stg_episodes')
+              field: episode_id

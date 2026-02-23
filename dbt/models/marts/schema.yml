@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: dim_creator
+    columns:
+      - name: creator_id
+        tests: [not_null, unique]
+  - name: dim_podcast
+    columns:
+      - name: podcast_id
+        tests: [not_null, unique]
+      - name: creator_id
+        tests:
+          - relationships:
+              to: ref('dim_creator')
+              field: creator_id
+  - name: fct_creator_daily
+    columns:
+      - name: ds
+        tests: [not_null]
+      - name: creator_id
+        tests:
+          - relationships:
+              to: ref('dim_creator')
+              field: creator_id
+  - name: fct_creator_funnel
+    columns:
+      - name: creator_id
+        tests:
+          - relationships:
+              to: ref('dim_creator')
+              field: creator_id

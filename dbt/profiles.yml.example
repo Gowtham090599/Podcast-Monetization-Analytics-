@@ -1,0 +1,7 @@
+podcast_monetization:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: ../warehouse.duckdb
+      threads: 8

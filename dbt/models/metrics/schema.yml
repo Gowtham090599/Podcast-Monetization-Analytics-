@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: metric_daily_kpis
+    description: "Daily KPIs for dashboarding and monitoring."
+    columns:
+      - name: ds
+        tests: [not_null, unique]

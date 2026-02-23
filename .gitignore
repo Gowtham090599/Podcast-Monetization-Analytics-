@@ -1,0 +1,15 @@
+# python
+__pycache__/
+.venv/
+*.pyc
+.ipynb_checkpoints/
+
+# data + outputs
+data/
+outputs/
+warehouse.duckdb
+
+# dbt
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/

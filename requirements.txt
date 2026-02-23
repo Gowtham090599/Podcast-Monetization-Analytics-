@@ -1,0 +1,9 @@
+pandas>=2.1
+numpy>=1.26
+duckdb>=0.10
+dbt-duckdb>=1.8
+scikit-learn>=1.4
+scipy>=1.11
+matplotlib>=3.8
+faker>=24.0
+pyyaml>=6.0
