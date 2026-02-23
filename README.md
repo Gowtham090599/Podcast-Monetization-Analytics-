@@ -103,20 +103,7 @@ Outputs land in `outputs/` as CSVs you can feed into Tableau/Looker.
 
 ---
 
-## What to Show in Interviews
-
-- **Funnel insights** (drop-offs, segments, root causes)
-- **Experiment results** (uplift + confidence interval + guardrails)
-- **Predictive modeling** (AUC + feature importance + recommended targeting)
-- **Data rigor**: dbt tests, documentation, metric definitions, monitoring checks
-
----
-
-## Switching to BigQuery (Optional)
-
-1. Install adapter: `pip install dbt-bigquery`
-2. Create a `profiles.yml` entry for BigQuery
-3. Update `target` in dbt commands
+ in dbt commands
 
 Models already use portable SQL patterns.
 
